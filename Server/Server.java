@@ -150,39 +150,38 @@ public class Server extends JFrame implements ActionListener {
       {
 	//parse the request
 	request_type = theServer.parse_RTSP_request(); //blocking
-	    
-	if ((request_type == PLAY) && (state == READY))
-	  {
-	    //send back response
-	    theServer.send_RTSP_response();
-	    //start timer
-	    theServer.timer.start();
-	    //update state
-	    state = PLAYING;
-	    System.out.println("New RTSP state: PLAYING");
-	  }
-	else if ((request_type == PAUSE) && (state == PLAYING))
-	  {
-	    //send back response
-	    theServer.send_RTSP_response();
-	    //stop timer
-	    theServer.timer.stop();
-	    //update state
-	    state = READY;
-	    System.out.println("New RTSP state: READY");
-	  }
-	else if (request_type == TEARDOWN)
-	  {
-	    //send back response
-	    theServer.send_RTSP_response();
-	    //stop timer
-	    theServer.timer.stop();
-	    //close sockets
-	    theServer.RTSPsocket.close();
-	    theServer.RTPsocket.close();
+        if ((request_type == PLAY) && (state == READY))
+          {
+            //send back response
+            theServer.send_RTSP_response();
+            //start timer
+            theServer.timer.start();
+            //update state
+            state = PLAYING;
+            System.out.println("New RTSP state: PLAYING");
+          }
+        else if ((request_type == PAUSE) && (state == PLAYING))
+          {
+            //send back response
+            theServer.send_RTSP_response();
+            //stop timer
+            theServer.timer.stop();
+            //update state
+            state = READY;
+            System.out.println("New RTSP state: READY");
+          }
+        else if (request_type == TEARDOWN)
+          {
+            //send back response
+            theServer.send_RTSP_response();
+            //stop timer
+            theServer.timer.stop();
+            //close sockets
+            theServer.RTSPsocket.close();
+            theServer.RTPsocket.close();
 
-	    System.exit(0);
-	  }
+            System.exit(0);
+          }
       }
   }
 
@@ -225,7 +224,7 @@ public class Server extends JFrame implements ActionListener {
 	}
 	catch(Exception ex)
 	  {
-	    System.out.println("Exception caught: "+ex);
+	    System.out.println("Exception caught timer: "+ex);
 	    System.exit(0);
 	  }
       }
@@ -290,7 +289,7 @@ public class Server extends JFrame implements ActionListener {
     }
     catch(Exception ex)
       {
-	System.out.println("Exception caught: "+ex);
+	System.out.println("Exception caught Parse: "+ex);
 	System.exit(0);
       }
     return(request_type);

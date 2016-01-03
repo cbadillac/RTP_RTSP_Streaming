@@ -7,7 +7,8 @@
 *.iml
 
 ## Directory-based project format:
-.idea/
+Client/.idea
+Server/.idea
 # if you remove the above rule, at least ignore the following:
 
 # User-specific stuff:
@@ -37,11 +38,11 @@
 ## Plugin-specific files:
 
 # IntelliJ
-/out/
-
+Client/out/
+Server/out/
 # mpeltonen/sbt-idea plugin
-.idea_modules/
-
+Client/.idea_modules/
+Server/.idea_modules/
 # JIRA plugin
 atlassian-ide-plugin.xml
 
